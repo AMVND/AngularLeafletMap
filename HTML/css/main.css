@@ -1,0 +1,203 @@
+/* CSS Document */
+
+/* Basic Elements */
+html, body {
+	margin: 0;
+	height: 100%;
+	}
+body {	
+	font: 75%/120% Arial, Helvetica, sans-serif;
+	}
+#container {
+	width: 1024px;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+	}
+#header {
+	width: 1024px;
+	height: 100px;
+	background: url(../images/banner_bg.png) repeat-x 0% 0%;
+	}
+#wrapper {
+	width: 1024px;
+	height: 100%;
+	}
+#map {
+	float: left;
+	width: 672px;
+	height: 100%;
+	margin: 10px 0px 0px 0px;
+	border: #c4c4c4 solid 1px;
+	}
+#left {
+	float: left;
+	width: 350px;
+	}
+#footer {
+	width: 340px;
+	margin: 0px 10px 10px 0px;
+	border: 1px solid #c4c4c4;
+	text-align: center;
+	padding: 5px 0;
+	color: #84d5fa;
+	background: #f7f7f7;
+	}
+
+/* Sidebar */
+#sidebar {
+	width: 340px;
+	margin: 10px 10px 10px 0px;
+	border-bottom: solid 1px #c4c4c4;
+	}
+#sidebar h3 {
+	background: #e9e7e7 url(../images/arrow-square.gif) no-repeat right -51px;
+	padding: 7px 15px;
+	margin: 0;
+	font: bold 120%/100% Arial, Helvetica, sans-serif;
+	border: solid 1px #c4c4c4;
+	border-bottom: none;
+	cursor: pointer;
+	}
+#sidebar h3:hover {
+	background-color: #e3e2e2;
+	}
+#sidebar h3.active {
+	background-position: right 5px;
+	}
+#sidebar div {
+	background: #f7f7f7;
+	margin: 0;
+	padding: 10px 15px 20px;
+	border-left: solid 1px #c4c4c4;
+	border-right: solid 1px #c4c4c4;
+	}
+	
+/* Slide Panel */
+a:focus {
+	outline: none;
+}
+#slidepanel {
+	width: 370px;
+	height: 290px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	}
+#panel {
+	background: #f7f7f7;
+	height: 200px;
+	border-top: solid 1px #c4c4c4;
+	border-left: solid 1px #c4c4c4;
+	border-right: solid 1px #c4c4c4;
+	border-bottom: solid 4px #c4c4c4;
+	display: none;
+	}
+.slide {
+	margin: 0px 0px 0px 197px;
+	padding: 0;
+	background: url(../images/login_bt.png) no-repeat center top;
+	}
+.btn-slide {
+	background: url(../images/white-arrow.gif) no-repeat right -50px;
+	text-align: center;
+	width: 144px;
+	height: 31px;
+	padding: 10px 10px 0px 20px;
+	margin: 0 auto;
+	display: block;
+	font: bold 120%/100% Arial, Helvetica, sans-serif;
+	color: #fff;
+	text-decoration: none;
+	}
+.active {
+	background-position: right 12px;
+	}
+
+/* Login form */
+#login label {
+	width: 100px;
+	float: left;
+	text-align: right;
+	margin: 0px 10px 0px 30px;
+	display: block;
+	}
+#login .submit input {
+	margin-left: 140px;
+	background-color:#f5f5f5;
+    border:1px solid #dedede;
+    border-top:1px solid #eee;
+    border-left:1px solid #eee;
+	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    font-size:100%;
+    line-height:130%;
+    text-decoration:none;
+    font-weight:bold;
+    color:#565656;
+    cursor:pointer;
+    padding:5px 10px 6px 7px;
+	}
+#login .submit input:hover {
+	background-color:#dff4ff;
+    border:1px solid #c2e1ef;
+    color:#336699;
+	}
+#login .submit input:active {
+    background-color:#6299c5;
+    border:1px solid #6299c5;
+    color:#fff;
+	}
+#login input {
+	color: #781351;
+	background: #fee3ad;
+	border: 1px solid #781351;
+	}
+
+/* Slide Bar Navigation */
+ul#navigation {
+    position: fixed;
+    margin: 0px;
+    padding: 0px;
+    top: 110px;
+    left: 0px;
+    list-style: none;
+    z-index:9999;
+}
+ul#navigation li {
+    width: 100px;
+}
+ul#navigation li a {
+    display: block;
+    margin-left: -2px;
+    width: 100px;
+    height: 70px;
+    background-color:#CFCFCF;
+    background-repeat:no-repeat;
+    background-position:center center;
+    border:1px solid #AFAFAF;
+    -moz-border-radius:0px 10px 10px 0px;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -khtml-border-bottom-right-radius: 10px;
+    -khtml-border-top-right-radius: 10px;
+    /*-moz-box-shadow: 0px 4px 3px #000;
+    -webkit-box-shadow: 0px 4px 3px #000;
+    */
+    opacity: 0.6;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+}
+ul#navigation .showmenu a{
+    background-image: url(../images/pin.png);
+}
+
+/* Additional styles */
+img {
+	border: 0;
+	}
+a {
+	color: #84d5fa;
+	text-decoration: none;
+	}
+a:hover {
+	color: orange;
+	}

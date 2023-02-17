@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+onDrawCreated($event: Event) {
+throw new Error('Method not implemented.');
+}
   title = 'angularmap';
+options: any;
+drawOptions: any;
+drawnItems: any;
 }

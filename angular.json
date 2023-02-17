@@ -47,10 +47,17 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images/",
+                "output": "./assets"
+              }
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/leaflet/dist/leaflet.css",
+              "src/styles.css",
+              "./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"
             ],
             "scripts": []
           },
@@ -112,6 +119,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/leaflet/dist/leaflet.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,5 +127,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "d063bb57-6cf6-4936-869f-f5815bc0d254"
   }
 }
