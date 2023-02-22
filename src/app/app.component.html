@@ -38,65 +38,16 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.css" />
 	<link rel="stylesheet" href="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.css" />
 	<script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
-
-	<script>
-		$(document).ready(function () {
-
-			/* Side Bar */
-			$("#sidebar h3:first").addClass("active");
-			$("#sidebar div:not(:first)").hide();
-
-			$("#sidebar h3").click(function () {
-				$(this).next("div").slideToggle("fast")
-					.siblings("div:visible").slideUp("fast");
-				$(this).toggleClass("active");
-				$(this).siblings("h3").removeClass("active");
-			});
-
-			/* Login Form Slide Toggle */
-			$(".btn-slide").click(function () {
-				$("#panel").slideToggle("slow");
-				$(this).toggleClass("active"); return false;
-			});
-
-			/* Slide Bar Navigation */
-			$(function () {
-				$('#navigation a').stop().animate({ 'marginLeft': '-85px' }, 1000);
-
-				$('#navigation > li').hover(
-					function () {
-						$('a', $(this)).stop().animate({ 'marginLeft': '-2px' }, 200);
-					},
-					function () {
-						$('a', $(this)).stop().animate({ 'marginLeft': '-85px' }, 200);
-					}
-				);
-			});
-
-			/* Show Hide Slide Bar */
-			$("#navigation .showmenu").click(function () {
-				$("#left").toggle("slide", { direction: "left" }, 2);
-				if ($("#map").css("width") == "672px") {
-					$("#map").width(1022);
-				} else {
-					$("#map").width(672);
-				}
-			});
-
-		});
-	</script>
-	<script>
-
-	</script>
 </head>
 
 <body>
 	<div id="container">
 		<div id="header">
-			<a href="#"><img src="../images/logo.png" width="583" height="100" alt="WebGIS Quản lý giao thông bộ" /></a>
+			<a href="#"><img src="assets/images/logo.png" width="583" height="100" alt="WebGIS Quản lý giao thông bộ" /></a>
 		</div><!--End Header-->
 
-		<div id="slidepanel">
+
+		 <!-- <div id="slidepanel">
 			<div id="panel">
 				<form id="login" name="login" action="#" method="post">
 					<p><label for="user">Người dùng:</label><input type="text" name="user" id="user" value=""
@@ -106,9 +57,9 @@
 							type="checkbox" checked="checked" value="forever" /></p>
 					<p class="submit"><input type="submit" name="submit" value="Đăng nhập" /></p>
 				</form>
-			</div><!--End Panel-->
+			 </div>
 			<p class="slide"><a href="#" class="btn-slide">Đăng nhập</a></p>
-		</div><!--End SlidePanel-->
+		</div>  -->
 
 		<ul id="navigation">
 			<li class="showmenu"><a href="#" title="Hiện/Ẩn thanh menu"></a></li>
@@ -118,11 +69,9 @@
 			<div id="left">
 				<div id="sidebar">
 					<h3>Quản lý lớp</h3>
-					<div id="layers">
-                        <app-selectlayer></app-selectlayer>
-                    </div>
+                    <section><app-selectlayer id="selectlayer"></app-selectlayer></section>
 					<h3>Truy vấn dữ liệu</h3>
-					<div>
+					<div id="div2">
 						<form>
 							Tọa độ
 							<input type="text" name="" id="" placeholder="X-Y (VD: 21-107)">
@@ -141,18 +90,19 @@
 						</form>
 					</div>
 					<h3>Cập nhật dữ liệu thuộc tính</h3>
-					<div>
+						<div>
 
-					</div>
+						</div>
 					<h3>Tìm đường đi</h3>
-					<div>
+
+					<div id="div4">
 						<div id="leaflet-routing-machine">
 
 						</div>
 					</div>
 
 					<h3>Trợ giúp</h3>
-					<div>
+					<div id="div5">
 
 					</div>
 				</div><!--End Sidebar-->
@@ -162,8 +112,10 @@
 					<a href="#">Liên hệ</a>
 				</div>
 			</div>
+
 			<div id="map">
-                  <app-map></app-map>
+            <app-drawtoolbar></app-drawtoolbar>
+            <app-map></app-map>
             </div>
 		</div>
 	</div>

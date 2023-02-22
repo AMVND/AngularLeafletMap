@@ -1,0 +1,15 @@
+<div leaflet style="height: 100%; margin: 0; padding: 0;"
+     leafletDraw
+     [leafletOptions]="options"
+     [leafletDrawOptions]="drawOptions"
+     [leafletDrawLocal]="drawLocal"
+     (leafletDrawCreated)="onDrawCreated($event)"
+     (leafletDrawStart)="onDrawStart($event)">
+
+	<!-- Add the drawnItems featureGroup to the map -->
+	<div [leafletLayer]="drawnItems"></div>
+
+</div>
+
+
+

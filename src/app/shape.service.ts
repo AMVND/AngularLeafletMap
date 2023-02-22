@@ -23,7 +23,6 @@ export class ShapeService {
         const latlgn = c.geometry.coordinates[0][1];
         const marker = L.polygon([latlgn]);
         console.log(marker);
-    
         marker.addTo(map);
       }
     });

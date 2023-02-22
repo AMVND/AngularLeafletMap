@@ -1,8 +1,10 @@
 import { Component, AfterViewInit, ViewChild, ViewContainerRef } from '@angular/core';
 import * as L from 'leaflet';
 import { ShapeService } from '../shape.service';
-import { MarkerOptions } from 'leaflet';
-import { SelectlayerComponent } from '../selectlayer/selectlayer.component';
+import { MarkerOptions, Layer } from 'leaflet';
+
+
+
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -26,7 +28,8 @@ L.Marker.prototype.options.icon = iconDefault;
   styleUrls: ['./map.component.css']
 
 })
-export class MapComponent implements AfterViewInit {
+export class MapComponent implements AfterViewInit{
+
   private map : L.Map;
   private states;
 
@@ -36,25 +39,13 @@ export class MapComponent implements AfterViewInit {
   markerIcon: MarkerOptions | undefined;
 
 
-
-  //Vị trí bản đồ
+    //Vị trí bản đồ
   private initMap(): void {
     this.map = L.map('map', {
       center: [ 21.54, 107.96 ],
       zoom: 14
     });
 
-  
-
-  
-  //   ///Mini Map
-  //         // const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  //         //   maxZoom: 18,
-  //         //   minZoom: 3,
-  //         //   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  //         // });
-        
-  //         // new MiniMap(tiles,{toggleDisplay: true}).addTo(this.map);
 
     ///Lớp bản đồ
     const tileLayers = {
@@ -86,17 +77,13 @@ export class MapComponent implements AfterViewInit {
     const statelayer = {
       "Thửa đất" : L.geoJSON().addTo(this.map)
     }
-    
+
     L.control.layers(tileLayers, statelayer, {collapsed: false}).addTo(this.map);
   }
-
-
 
   constructor(
     private shapeService: ShapeService) { }
 
- 
-    
 
   ///Làm nổi bật đối tượng
   private highlightFeature(e: L.LeafletMouseEvent) {
@@ -109,7 +96,7 @@ export class MapComponent implements AfterViewInit {
       fillColor: '#FAE042'
     });
   }
-  
+
   private resetFeature(e: L.LeafletMouseEvent) {
     const layer = e.target;
     layer.setStyle({
@@ -128,7 +115,7 @@ export class MapComponent implements AfterViewInit {
       "<h1><p>FID:" + layer.feature.properties.FID + "</p></h1><p>Loại đất: " +  layer.feature.properties.SDD+ " </p> ");
   }
 
-  
+
   private initStatesLayer() {
     const stateLayer = L.geoJSON(this.states, {
       style: () => ({
@@ -137,7 +124,7 @@ export class MapComponent implements AfterViewInit {
         color: '#008f68',
         fillOpacity: 0.8,
         fillColor: '#6DB65B'
-      }), 
+      }),
       onEachFeature: (feature, layer) => (
         layer.on({
           mouseover: (e) => (this.highlightFeature(e)),
@@ -150,7 +137,7 @@ export class MapComponent implements AfterViewInit {
     stateLayer.bringToBack();
   }
 
-  
+
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -159,23 +146,22 @@ export class MapComponent implements AfterViewInit {
       this.states = states;
       this.initStatesLayer();
     });
-    this.shapeService.makeInfoTD(this.map);
-    // console.log(this.shapeService.makeInfoTD);
 
 
 
-    ///Chọn điểm trên bản đồ 
+
+    ///Chọn điểm trên bản đồ
     this.map.on("click", e => {
       console.log(e.latlng); // get the coordinates
-      
-      let marker = L.marker([e.latlng.lat, e.latlng.lng], this.markerIcon);
-      marker.addTo(this.map).bindPopup(
-      "X: "+ Math.round(e.latlng.lat * 1000)/1000 + 
-      "<br> Y: "+ Math.round(e.latlng.lng * 1000)/1000, {maxWidth: 500});
-  
+
+      // let marker = L.marker([e.latlng.lat, e.latlng.lng], this.markerIcon);
+      // marker.addTo(this.map).bindPopup(
+      // "X: "+ Math.round(e.latlng.lat * 1000)/1000 +
+      // "<br> Y: "+ Math.round(e.latlng.lng * 1000)/1000, {maxWidth: 500});
+
     });
-    
-    
+
+
     ///Vẽ hình polygon
   }
 }

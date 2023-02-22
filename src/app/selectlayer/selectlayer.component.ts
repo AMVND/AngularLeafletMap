@@ -1,59 +1,49 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AfterViewInit, Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import * as L from 'leaflet';
-import { latLng, Layer } from 'leaflet';
+import { latLng, Layer, tileLayer } from 'leaflet';
+import { ShapeService } from '../shape.service';
 @Component({
   selector: 'app-selectlayer',
   templateUrl: './selectlayer.component.html',
   styleUrls: ['./selectlayer.component.css']
 })
-export class SelectlayerComponent{
+export class SelectlayerComponent implements OnInit {
+  private map : L.Map;
+  private states;
 
-     // Values to bind to Leaflet Directive
-     layers: Layer[];
-     layersControl = {
-         baseLayers: {
-             'Open Street Map': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              maxZoom: 18,
-              minZoom: 3,
-              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            }),
-            'Vệ tinh': L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&hl=tr&x={x}&y={y}&z={z}', {
-              subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-              maxNativeZoom: 20,
-              zIndex: 0,
-              maxZoom: 20
-            }),
-            'Địa điểm': L.tileLayer('https://{s}.google.com/vt/lyrs=m&hl=tr&x={x}&y={y}&z={z}', {
-              subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-              zIndex: 0,
-              maxNativeZoom: 21,
-              maxZoom: 21
-            }),
-            'Độ cao': L.tileLayer('https://{s}.google.com/vt/lyrs=p&hl=tr&x={x}&y={y}&z={z}', {
-              subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-              zIndex: 0,
-              maxNativeZoom: 21,
-              maxZoom: 21
-            })
-         },
-         overlays: {
-            
-         }
-     };
-     options = {
-         zoom: 10,
-         center: latLng(46.879966, -121.726909)
-     };
- 
- 
-     constructor() {
-         // This is different from the demo, just set them manually
-         this.layers = [
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            minZoom: 3,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          })
-          ];
-     }
+  @ViewChild('popupContent', {
+    read: ViewContainerRef,
+  }) popupContent: ViewContainerRef;
+  markerIcon: L.MarkerOptions | undefined;
+
+  constructor() { }
+    layers: Layer[];
+    options = {
+      // layers: [
+      //   tileLayer('https://{s}.tile.openstreetmap.org/hot/{z}/{x}/{y}.png', { maxZoom: 30, minZoom: 12 }),
+      // ],
+      // zoom: 14,
+      // center: L.latLng(21.54, 107.96)
+    };
+    layersControl: any;
+
+    ngOnInit() {
+      // this.layersControl = {
+      //   baseLayers: {
+      //     "Topo Map": tileLayer(
+      //       "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+      //       { maxZoom: 30, minZoom: 12 }
+      //     ),
+      //     Imagery: tileLayer(
+      //       "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      //       { maxZoom: 30, minZoom: 12 }
+      //     ),
+      //     'Outdoors': tileLayer('https://{s}.tile.openstreetmap.org/hot/{z}/{x}/{y}.png', { maxZoom: 30, minZoom: 12 }),
+      //     None: tileLayer("", { maxZoom: 100, minZoom: 12 })
+      //   }
+      // };
+    }
+
+
 }

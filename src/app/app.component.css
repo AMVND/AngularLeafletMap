@@ -18,7 +18,7 @@ body {
 #header {
 	width: 1024px;
 	height: 100px;
-	background: url(../images/banner_bg.png) repeat-x 0% 0%;
+	background: url(/assets/images/banner_bg.png) repeat-x 0% 0%;
 	}
 #wrapper {
 	width: 1024px;
@@ -54,7 +54,7 @@ body {
 	border-bottom: solid 1px #c4c4c4;
 	}
 #sidebar h3 {
-	background: #e9e7e7 url(../images/arrow-square.gif) no-repeat right -51px;
+	background: #e9e7e7 url(/assets/images/arrow-square.gif) no-repeat right -51px;
 	padding: 7px 15px;
 	margin: 0;
 	font: bold 120%/100% Arial, Helvetica, sans-serif;
@@ -74,7 +74,9 @@ body {
 	padding: 10px 15px 20px;
 	border-left: solid 1px #c4c4c4;
 	border-right: solid 1px #c4c4c4;
+	display: block !important;
 	}
+
 
 	
 /* Slide Panel */
@@ -87,6 +89,7 @@ a:focus {
 	position: absolute;
 	top: 0px;
 	right: 0px;
+	z-index: 100000;
 	}
 #panel {
 	background: #f7f7f7;
@@ -96,14 +99,15 @@ a:focus {
 	border-right: solid 1px #c4c4c4;
 	border-bottom: solid 4px #c4c4c4;
 	display: none;
+	
 	}
 .slide {
 	margin: 0px 0px 0px 197px;
 	padding: 0;
-	background: url(../images/login_bt.png) no-repeat center top;
+	background: url(/assets/images/login_bt.png) no-repeat center top;
 	}
 .btn-slide {
-	background: url(../images/white-arrow.gif) no-repeat right -50px;
+	background: url(/assets/images/white-arrow.gif) no-repeat right -50px;
 	text-align: center;
 	width: 144px;
 	height: 31px;
@@ -191,7 +195,7 @@ ul#navigation li a {
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
 }
 ul#navigation .showmenu a{
-    background-image: url(../images/pin.png);
+    background-image: url(/assets/images/pin.png);
 }
 
 /* Additional styles */
